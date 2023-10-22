@@ -24,8 +24,8 @@ module ActsAsHasMany
         write_attribute(attribute, value.as_json)
       end
 
-      define_method("#{attribute}_attributes=".to_sym) do |value|
-        write_attribute(attribute, value)
+      define_method("#{attribute}_attributes=".to_sym) do |associates|
+        write_attribute(attribute, associates.values)
       end
     end
   end
