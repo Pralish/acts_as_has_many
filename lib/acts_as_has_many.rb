@@ -14,18 +14,24 @@ module ActsAsHasMany
       column =  options[:attribute].presence || attribute
       klass  =  options[:class_name].presence || attribute.classify
             
-      define_method(attribute) do
+      define_method(attribute.to_sym) do
         @options ||= read_attribute(column).map do |option|
           klass.constantize.new(option)
         end
       end
 
       define_method("#{attribute}=".to_sym) do |value|
-        write_attribute(attribute, value.as_json)
+        write_attribute(column, value.as_json)
       end
+    end
 
+    def acts_as_accepts_nested_attributes_for(attribute, options = {})
       define_method("#{attribute}_attributes=".to_sym) do |associates|
-        write_attribute(attribute, associates.values)
+        writeable_associates = associates.values.filter_map do |associate|
+          associate.except('_destroy') unless associate['_destroy'].present?
+        end
+
+        public_send("#{attribute}=".to_sym, writeable_associates)
       end
     end
   end
