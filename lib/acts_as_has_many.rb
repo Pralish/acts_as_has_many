@@ -12,7 +12,7 @@ module ActsAsHasMany
       validates attribute, associated: true
 
       column =  options[:attribute].presence || attribute
-      klass  =  options[:class_name].presence || attribute.classify
+      klass  =  options[:class_name].presence || attribute.to_s.classify
             
       define_method(attribute.to_sym) do
         @options ||= read_attribute(column).map do |option|
