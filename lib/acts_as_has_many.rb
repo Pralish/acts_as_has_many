@@ -27,9 +27,9 @@ module ActsAsHasMany
 
     def acts_as_accepts_nested_attributes_for(attribute, _options = {})
       define_method("#{attribute}_attributes=".to_sym) do |associates|
-        writeable_associates = associates.values.filter_map do |associate|
+        writeable_associates = associates.values.map do |associate|
           associate.except('_destroy') unless associate['_destroy'].present?
-        end
+        end.compact
 
         public_send("#{attribute}=".to_sym, writeable_associates)
       end
