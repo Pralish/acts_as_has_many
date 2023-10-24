@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "acts_as_has_many/version"
+require_relative 'acts_as_has_many/version'
 
 module ActsAsHasMany
   def self.included(base)
@@ -13,7 +13,7 @@ module ActsAsHasMany
 
       column =  options[:attribute].presence || attribute
       klass  =  options[:class_name].presence || attribute.to_s.classify
-            
+
       define_method(attribute.to_sym) do
         @options ||= read_attribute(column).map do |option|
           klass.constantize.new(option)
@@ -25,7 +25,7 @@ module ActsAsHasMany
       end
     end
 
-    def acts_as_accepts_nested_attributes_for(attribute, options = {})
+    def acts_as_accepts_nested_attributes_for(attribute, _options = {})
       define_method("#{attribute}_attributes=".to_sym) do |associates|
         writeable_associates = associates.values.filter_map do |associate|
           associate.except('_destroy') unless associate['_destroy'].present?

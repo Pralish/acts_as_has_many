@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'database_helper'
 require 'acts_as_has_many'
 
@@ -10,7 +12,7 @@ class DummyModel < ActiveRecord::Base
   # class with classfied attribute name exists
   acts_as_has_many :class_ones
   # provided class name exists
-  acts_as_has_many :class_twos,  class_name: 'ClassTen'
+  acts_as_has_many :class_twos, class_name: 'ClassTen'
   # class with classfied attribute name does not exist
   acts_as_has_many :class_threes
   # provided class name does not exist

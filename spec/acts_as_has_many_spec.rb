@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'models'
 require 'pry'
 
-RSpec.describe "ActiveRecord::Base model with #acts_as_has_many called" do
+RSpec.describe 'ActiveRecord::Base model with #acts_as_has_many called' do
   subject { DummyModel }
 
   let(:dummy_instance) do
     DummyModel.new(
-      class_ones: [{name: 'test'}],
-      class_twos: [{name: 'test'}],
-      class_threes: [{name: 'test'}],
-      class_fours: [{name: 'test'}]
+      class_ones: [{ name: 'test' }],
+      class_twos: [{ name: 'test' }],
+      class_threes: [{ name: 'test' }],
+      class_fours: [{ name: 'test' }]
     )
   end
 
