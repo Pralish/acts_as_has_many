@@ -1,5 +1,9 @@
 # ActsAsHasMany
 
+[![CI](https://github.com/pralish/acts_as_has_many/workflows/Ruby/badge.svg)](https://github.com/Pralish/acts_as_has_many/actions)
+[![Gem Version](https://badge.fury.io/rb/acts_as_has_many.svg)](https://badge.fury.io/rb/acts_as_has_many)
+[![Coverage Status](https://coveralls.io/repos/github/Pralish/acts_as_has_many/badge.svg)](https://coveralls.io/github/Pralish/acts_as_has_many)
+
  ActsAsHasMany mimics a has_many association within an array stored in your ActiveRecord models. It provides a flexible way to define and manage custom associations using array attributes, without relying solely on standard ActiveRecord associations.  Additionally, it supports nested forms by mimicking accepts_nested_attributes_for.
 
 ## Installation
