@@ -1,8 +1,6 @@
 # ActsAsHasMany
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/acts_as_has_many`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+ ActsAsHasMany mimics a has_many association within an array stored in your ActiveRecord models. It provides a flexible way to define and manage custom associations using array attributes, without relying solely on standard ActiveRecord associations.  Additionally, it supports nested forms by mimicking accepts_nested_attributes_for.
 
 ## Installation
 
@@ -16,7 +14,27 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+Use the acts_as_has_many method to define custom array associations within your model:
+
+```
+class MyModel < ActiveRecord::Base
+  acts_as_has_many :some_attribute
+end
+```
+
+`some_attribute` is an attrubute with in your model, and is expected to return an Array
+
+The gem will look for a class with the same name as the attribute, eg. `RelatedObject` 
+
+### Custom Class and OpenStruct
+
+You can specify custom attributes for your associations. The gem will look for a class with the same name as the attribute by default. If you prefer not to create a new class, you can use OpenStruct to manage your associations.
+
+```
+class MyModel < ActiveRecord::Base
+  acts_as_has_many :some_attribute, class_name: 'OpenStruct'
+end
+```
 
 ## Development
 
