@@ -16,8 +16,6 @@ SimpleCov.start
 
 require 'coveralls'
 
-Coveralls.wear!
-
 RSpec.configure do |config|
   config.disable_monkey_patching!
   config.filter_run_including focus: true

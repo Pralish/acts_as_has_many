@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'models'
-require 'pry'
 
 RSpec.describe 'ActiveRecord::Base model with #acts_as_accepts_nested_attributes_for called' do
   subject { DummyModel }
