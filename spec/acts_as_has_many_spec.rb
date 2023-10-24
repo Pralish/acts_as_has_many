@@ -8,10 +8,10 @@ RSpec.describe 'ActiveRecord::Base model with #acts_as_has_many called' do
 
   let(:dummy_instance) do
     DummyModel.new(
-      class_ones: [{ name: 'test' }],
-      class_twos: [{ name: 'test' }],
-      class_threes: [{ name: 'test' }],
-      class_fours: [{ name: 'test' }]
+      class_ones: [{ name: 'class one' }],
+      class_twos: [{ name: 'class two' }],
+      class_threes: [{ name: 'class three' }],
+      class_fours: [{ name: 'class four' }]
     )
   end
 
@@ -40,6 +40,30 @@ RSpec.describe 'ActiveRecord::Base model with #acts_as_has_many called' do
       it 'raises error' do
         expect { dummy_instance.class_fours }.to raise_error(NameError)
       end
+    end
+  end
+
+  context 'valid attribute provided' do
+    it 'defines a getter method' do
+      expect(dummy_instance.respond_to?(:class_fives)).to be(true)
+    end
+
+    it 'returns an array of instances of has_many class' do
+      expect(dummy_instance.class_fives).to all(be_instance_of(ClassFive))
+    end
+
+    it 'returns value of provided attribute' do
+      expect(dummy_instance.class_fives.first.name).to eq('class one')
+    end
+  end
+
+  context 'invalid attribute provided' do
+    it 'defines a getter method' do
+      expect(dummy_instance.respond_to?(:class_sixes)).to be(true)
+    end
+
+    it 'raises error' do
+      expect { dummy_instance.class_sixes }.to raise_error(NameError)
     end
   end
 end

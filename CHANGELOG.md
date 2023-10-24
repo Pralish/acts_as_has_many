@@ -17,3 +17,5 @@
 - Add changelogs
 
 - fix lint issues with rubocop
+
+- use map + compact instead of filter_map to support older versions of ruby

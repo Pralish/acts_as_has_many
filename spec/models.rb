@@ -11,24 +11,36 @@ class DummyModel < ActiveRecord::Base
 
   # class with classfied attribute name exists
   acts_as_has_many :class_ones
+  acts_as_accepts_nested_attributes_for :class_ones
   # provided class name exists
   acts_as_has_many :class_twos, class_name: 'ClassTen'
   # class with classfied attribute name does not exist
   acts_as_has_many :class_threes
   # provided class name does not exist
   acts_as_has_many :class_fours, class_name: 'ClassFour'
+
+  # valid attribute name provided
+  acts_as_has_many :class_fives, attribute: :class_ones, class_name: 'ClassFive'
+  # invalid attribute name provided
+  acts_as_has_many :class_sixes, attribute: :class_invalid
 end
 
-class ClassOne
+class Mixin
   include ActiveModel::Model
 
   attr_accessor :name
 end
 
-class ClassTen
-  include ActiveModel::Model
+class ClassOne < Mixin
+end
 
-  attr_accessor :name
+class ClassTen < Mixin
+end
+
+class ClassFive < Mixin
+end
+
+class ClassSix < Mixin
 end
 
 def initialize_schema
