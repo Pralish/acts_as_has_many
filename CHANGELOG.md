@@ -23,3 +23,5 @@
 ## [0.1.4]
 
 - Updated Readme
+
+- coverall setup
