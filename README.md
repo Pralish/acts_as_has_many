@@ -58,6 +58,19 @@ class MyModel < ActiveRecord::Base
 end
 ```
 
+### Nested Form Atributes
+
+ActsAsHasMany supports nested forms by mimicking accepts_nested_attributes_for, allowing you to work with nested attributes and create more complex forms with ease:
+
+```
+class MyModel < ActiveRecord::Base
+  acts_as_has_many :some_attribute
+  acts_as_accepts_nested_attributes_for :some_attribute
+end
+```
+
+This combination enables you to use nested forms for some_attribute.
+
 ## Support and Contact
 
 If you have any questions, issues, or feedback, please open an issue on the GitHub repository.
