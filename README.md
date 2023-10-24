@@ -22,19 +22,41 @@ class MyModel < ActiveRecord::Base
 end
 ```
 
-`some_attribute` is an attrubute with in your model, and is expected to return an Array
+`some_attribute` is an attrubute with in your model, and is expected to return an Array. It could be of any type `jsonb`, `text`, etc.
 
 The gem will look for a class with the same name as the attribute, eg. `RelatedObject` 
 
 ### Custom Class and OpenStruct
 
-You can specify custom attributes for your associations. The gem will look for a class with the same name as the attribute by default. If you prefer not to create a new class, you can use OpenStruct to manage your associations.
+You can also specify custom class names for your associations.
+
+```
+class MyModel < ActiveRecord::Base
+  acts_as_has_many :some_attribute, class_name: 'OtherClass'
+end
+```
+
+If you prefer not to create a new class, you can use OpenStruct.
 
 ```
 class MyModel < ActiveRecord::Base
   acts_as_has_many :some_attribute, class_name: 'OpenStruct'
 end
 ```
+
+### Custom Attribute
+
+By default, ActsAsHasMany overrides the attribute getter and setter methods. If you prefer to use different attribute, you can specify a custom attribute using the :attribute option:
+
+```
+class MyModel < ActiveRecord::Base
+  acts_as_has_many :some_attribute, attribute: :some_other_attribute
+end
+```
+
+## Support and Contact
+
+If you have any questions, issues, or feedback, please open an issue on the GitHub repository.
 
 ## Development
 
