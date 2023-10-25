@@ -70,7 +70,7 @@ end
 ```
 
 ```
-= f.fields_for :some_attribute, @model.some_attributes |ff|
+= f.fields_for :some_attributes, @model.some_attributes |ff|
   = ff.text_field :name
 ```
 
