@@ -64,9 +64,14 @@ ActsAsHasMany supports nested forms by mimicking accepts_nested_attributes_for, 
 
 ```
 class MyModel < ActiveRecord::Base
-  acts_as_has_many :some_attribute
-  acts_as_accepts_nested_attributes_for :some_attribute
+  acts_as_has_many :some_attributes
+  acts_as_accepts_nested_attributes_for :some_attributes
 end
+```
+
+```
+= f.fields_for :some_attribute, @model.some_attributes |ff|
+  = ff.text_field :name
 ```
 
 This combination enables you to use nested forms for some_attribute.
